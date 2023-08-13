@@ -1,0 +1,76 @@
+body{
+    background-color: black;
+    height:100%;
+    margin:0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header{
+    color:white;
+    font-size:34px;
+}
+
+
+
+#gameboard{
+    display: flex;
+    flex: 1;
+    min-height: 80vh;
+    align-items: center;
+    justify-content: center; 
+}
+
+
+
+#piano{
+    display: flex;
+    flex: 1;
+    min-height: 20vh;
+    justify-content: center;
+}
+
+#piano-box{
+    background-color: rgb(70, 70, 70);
+    display: flex;
+    justify-content: center; 
+    padding:10px 10px 0 10px;
+    border-radius: 8% 8% 0 0 / 20% 20% 0 0;
+}
+
+
+
+#piano-box .white{
+    background-color: white;
+    width:40px;
+    padding-bottom:10px;
+    margin-bottom:10px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    border:1px solid black;
+}
+
+#piano-box .black{
+    background-color: black;
+    color:white;
+    margin:0 -20px 0 -20px;
+    z-index: 2;
+    height:40%;
+    width:40px;
+    padding-bottom:10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-end;
+    border-radius:4px 4px 8px 8px;
+
+}
+
+.white:first-child{
+    border-radius: 75% 0 0 0 / 20% 0 0 0;
+}
+.white:last-child{
+    border-radius: 0 75% 0 0 / 0 20% 0 0;
+}
+
