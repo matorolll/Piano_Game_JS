@@ -6,7 +6,21 @@ function playSound(e) {
     key.classList.add('playing');
     audio.currentTime = 0;
     audio.play();
-  }
+
+    UpdateList(key.innerHTML)
+}
+
+const pressedKeys = []
+function UpdateList(key){
+    pressedKeys.push(key)
+    console.log(pressedKeys)
+    const buttonList = document.getElementById('lista');
+    buttonList.textContent = pressedKeys.join(', ');
+
+}
+
+
+
   window.addEventListener('keydown', playSound);
   
   window.addEventListener('keyup', function(e) {
