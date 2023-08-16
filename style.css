@@ -74,3 +74,14 @@ header{
     border-radius: 0 75% 0 0 / 0 20% 0 0;
 }
 
+
+.key{
+    transition:all .16s;
+}
+
+.playing {
+    transform-origin: top;
+    transform:scale(1.05);
+    border-color: #c01818;
+    box-shadow: 0 0 1rem #c01818;
+  }
