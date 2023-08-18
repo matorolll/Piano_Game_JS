@@ -7,18 +7,20 @@ function playSound(e) {
     audio.currentTime = 0;
     audio.play();
 
-    UpdateList(key.innerHTML)
-    DisplayKey(key)
+    updateList(key.innerHTML)
+    displayKey(key)
+    updateScoreboard(pressedKeysList);
+
 }
 window.addEventListener('keydown', playSound);
 
 
-const pressedKeys = []
-function UpdateList(key){
-    pressedKeys.push(key)
-    console.log(pressedKeys)
+const pressedKeysList = []
+function updateList(key){
+    pressedKeysList.push(key)
+    console.log(pressedKeysList)
     const buttonList = document.getElementById('lista');
-    buttonList.textContent = pressedKeys.join(', ');
+    buttonList.textContent = pressedKeysList.join(', ');
 }
 
 
@@ -30,7 +32,7 @@ window.addEventListener('keyup', function(e) { //Remove playing tag
 });
 
 
-function DisplayKey(key){
+function displayKey(key){
     const textDiv = document.createElement('div');
     textDiv.classList.add('additional-text');
     textDiv.textContent = key.innerHTML;
@@ -59,6 +61,59 @@ function DisplayKey(key){
 }
 
 
+function updateScoreboard(pressedKeysList) {
+    const output = document.getElementById('scoreboardKeys');
+    const outputSum = document.getElementById('scoreboardSummary');
+    const outputFav = document.getElementById('scoreboardFavorite');
+
+    const uniqueKeys = [...new Set(pressedKeysList)]; // Usunięcie duplikatów
+    const keyCounts = {};
+    for (const key of uniqueKeys) {
+      keyCounts[key] = pressedKeysList.filter(k => k === key).length;
+    }
+    let outputHTML = '';
+    let maxCount = 0; 
+    let favKey = '';
+
+    for (const key in keyCounts) {
+      outputHTML += `${key}: ${keyCounts[key]}<br>`;
+      if (keyCounts[key] > maxCount) {
+        maxCount = keyCounts[key];
+        favKey = key;
+      }
+    }
+
+    output.innerHTML = outputHTML;
+    outputSum.innerHTML = 'Summary: '+ pressedKeysList.length;
+    outputFav.innerHTML = 'Favorite: '+ favKey;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function wypiszWLosowymMiejscu() {
     if (pressedKeys.length > 0) {
       const pierwszeSlowo = pressedKeys.shift();
@@ -75,12 +130,3 @@ function wypiszWLosowymMiejscu() {
     }
     setTimeout(wypiszWLosowymMiejscu, 10);
   }
-  //wypiszWLosowymMiejscu();
-  // .additional-text {
-  //   position: relative;
-  //   top: -100px;
-  //   text-align: center;
-  //   font-size: 16px;
-  //   font-weight: bold;
-  //   color:white;
-  // }

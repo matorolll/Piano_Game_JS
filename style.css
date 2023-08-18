@@ -85,3 +85,26 @@ header{
     border-color: #c01818;
     box-shadow: 0 0 1rem #c01818;
   }
+
+
+
+#scoreboard{
+    width: 150px;
+    padding:20px;
+    background-color:  rgb(70, 70, 70);
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+#scoreboard > p{
+    margin:auto;
+    text-align: center;
+    color:white;
+    padding-bottom:10px;
+}
+#scoreboard > #scoreboardKeys{
+    text-align:left;
+    padding-left:35px;
+}
